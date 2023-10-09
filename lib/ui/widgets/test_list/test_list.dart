@@ -84,8 +84,8 @@ class _TestListItemWidget extends StatelessWidget {
                       Text(
                         test.name,
                         style:
-                            const TextStyle(color: Colors.black, fontSize: 20),
-                        maxLines: 1,
+                            const TextStyle(color: Colors.black, fontSize: 19),
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 5),

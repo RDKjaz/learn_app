@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:app_learn/entities/tests.dart';
 import 'package:app_learn/ui/theme/text_styles.dart';
 import 'package:app_learn/ui/widgets/test_detail/test_detail_view_model.dart';
@@ -54,16 +53,16 @@ class _DescriptionWidget extends StatefulWidget {
   _DescriptionWidget({super.key, required this.pageController});
 
   final PageController pageController;
-  bool isButtonColorChanged = false;
   var res = 0;
-  Timer? colorChangeTimer;
 
   @override
   State<_DescriptionWidget> createState() => _DescriptionWidgetState();
 }
 
 class _DescriptionWidgetState extends State<_DescriptionWidget> {
-  void checkAnswer(TestAnswer a) {
+  var text = "";
+
+  void checkAnswer(TestAnswer a, int bn) {
     if (a.isRight) {
       widget.pageController.nextPage(
           duration: const Duration(milliseconds: 700), curve: Curves.easeInOut);
@@ -74,7 +73,8 @@ class _DescriptionWidgetState extends State<_DescriptionWidget> {
     }
   }
 
-  Future<void> _showAlertDialog(int res, BuildContext context) async {
+  Future<void> _showAlertDialog(
+      int res, int qcount, BuildContext context) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -84,7 +84,7 @@ class _DescriptionWidgetState extends State<_DescriptionWidget> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text("Правильных ответов - $res"),
+                Text("Правильных ответов - $res из $qcount"),
               ],
             ),
           ),
@@ -106,7 +106,7 @@ class _DescriptionWidgetState extends State<_DescriptionWidget> {
       widget.res++;
     }
     await model.saveResult(widget.res);
-    await _showAlertDialog(widget.res, context);
+    await _showAlertDialog(widget.res, model.data.questionsCount, context);
     Navigator.pop(context);
   }
 
@@ -122,31 +122,48 @@ class _DescriptionWidgetState extends State<_DescriptionWidget> {
       var q = questions[i];
       final k = Column(
         children: [
-          Text("${i + 1}. " + q.text, style: AnswerTextStyle.style),
-          ElevatedButton(
-              onPressed: () => i != questions.length - 1
-                  ? checkAnswer(answers[q.id]![0])
-                  : end(model, answers[q.id]![0]),
-              child: Text(
-                answers[q.id]![0].text,
-                style: AnswerTextStyle.style,
-              )),
-          ElevatedButton(
-              onPressed: () => i != questions.length - 1
-                  ? checkAnswer(answers[q.id]![1])
-                  : end(model, answers[q.id]![1]),
-              child: Text(
-                answers[q.id]![1].text,
-                style: AnswerTextStyle.style,
-              )),
-          ElevatedButton(
-              onPressed: () => i != questions.length - 1
-                  ? checkAnswer(answers[q.id]![2])
-                  : end(model, answers[q.id]![2]),
-              child: Text(
-                answers[q.id]![2].text,
-                style: AnswerTextStyle.style,
-              )),
+          Text(
+            "${i + 1}. " + q.text,
+            style: AnswerTextStyle.styleQuestion,
+            maxLines: 4,
+          ),
+          SizedBox(height: 40),
+          SizedBox(
+            width: 300,
+            child: ElevatedButton(
+                onPressed: () => i != questions.length - 1
+                    ? checkAnswer(answers[q.id]![0], 0)
+                    : end(model, answers[q.id]![0]),
+                child: Text(
+                  answers[q.id]![0].text,
+                  style: AnswerTextStyle.style,
+                  maxLines: 2,
+                )),
+          ),
+          SizedBox(
+            width: 300,
+            child: ElevatedButton(
+                onPressed: () => i != questions.length - 1
+                    ? checkAnswer(answers[q.id]![1], 1)
+                    : end(model, answers[q.id]![1]),
+                child: Text(
+                  answers[q.id]![1].text,
+                  style: AnswerTextStyle.style,
+                  maxLines: 2,
+                )),
+          ),
+          SizedBox(
+            width: 300,
+            child: ElevatedButton(
+                onPressed: () => i != questions.length - 1
+                    ? checkAnswer(answers[q.id]![2], 2)
+                    : end(model, answers[q.id]![2]),
+                child: Text(
+                  answers[q.id]![2].text,
+                  style: AnswerTextStyle.style,
+                  maxLines: 2,
+                )),
+          ),
         ],
       );
       widgets.add(k);
@@ -158,7 +175,7 @@ class _DescriptionWidgetState extends State<_DescriptionWidget> {
         SizedBox(
           height: 250,
           child: PageView(
-            // physics: const NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: widget.pageController,
             scrollDirection: Axis.horizontal,
             onPageChanged: (int page) {
@@ -200,38 +217,7 @@ class _PageArrowsState extends State<PageArrows> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // IconButton(
-        //   icon: Icon(
-        //     Icons.arrow_back,
-        //     color: index != 1 ? Colors.white : Colors.grey[800],
-        //   ),
-        //   onPressed: index != 1
-        //       ? () {
-        //           widget.pageController.previousPage(
-        //               duration: const Duration(milliseconds: 700),
-        //               curve: Curves.easeInOut);
-        //           index--;
-        //         }
-        //       : () {},
-        // ),
-        // IconButton(
-        //   icon: Icon(
-        //     Icons.arrow_forward,
-        //     color: index != widget.lastPageNumber
-        //         ? Colors.white
-        //         : Colors.grey[800],
-        //   ),
-        //   onPressed: index != widget.lastPageNumber
-        //       ? () {
-        //           widget.pageController.nextPage(
-        //               duration: const Duration(milliseconds: 700),
-        //               curve: Curves.easeInOut);
-        //           index++;
-        //         }
-        //       : () {},
-        // ),
-      ],
+      children: [],
     );
   }
 }

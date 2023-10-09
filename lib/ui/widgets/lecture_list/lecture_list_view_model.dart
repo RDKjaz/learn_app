@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class LectureListRowData {
   final String id;
   final String name;
-  final String image;
+  final String? image;
   final String description;
 
   LectureListRowData({

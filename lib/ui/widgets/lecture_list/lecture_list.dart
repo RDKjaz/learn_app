@@ -73,7 +73,9 @@ class _LectureListItemWidget extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             child: Row(
               children: [
-                Image.network(image, width: 95),
+                image != null
+                    ? Image.network(image, width: 95)
+                    : SizedBox(width: 95),
                 const SizedBox(width: 15),
                 Expanded(
                   child: Column(
@@ -83,8 +85,8 @@ class _LectureListItemWidget extends StatelessWidget {
                       Text(
                         lecture.name,
                         style:
-                            const TextStyle(color: Colors.black, fontSize: 20),
-                        maxLines: 1,
+                            const TextStyle(color: Colors.black, fontSize: 19),
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
                       // const SizedBox(height: 5),

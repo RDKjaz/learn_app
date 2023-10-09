@@ -92,96 +92,89 @@ class LoaderScreenViewModel {
   List<Lecture> createLectures() {
     final id1 = Uuid().v1().toString();
     final id2 = Uuid().v1().toString();
-    final id3 = Uuid().v1().toString();
-    final id4 = Uuid().v1().toString();
-    final id5 = Uuid().v1().toString();
+
     final lecture1 = Lecture(
+        image:
+            "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
         currentPage: 0,
-        videoUrl: "https://www.youtube.com/watch?v=iIurlWiwgFA",
         isFinished: false,
         id: id1,
-        name: "Название $id1",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
+        name: "Лекция 1. Введение в Java.",
         text:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation"
-            "ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputa");
+            "На сегодняшний момент язык Java является одним из самых распространенных и популярных языков программирования. Первая версия языка появилась еще в 1996 году в недрах компании Sun Microsystems, впоследствии поглощенной компанией Oracle. Java задумывался как универсальный язык программирования, который можно применять для различного рода задач. И к настоящему времени язык Java проделал большой путь, было издано множество различных версий. Текущей версией является Java 21, которая вышла в сентябре 2023 года. А Java превратилась из просто универсального языка в целую платформу и экосистему, которая объединяет различные технологии, используемые для целого ряда задач: от создания десктопных приложений до написания крупных веб-порталов и сервисов. Кроме того, язык Java активно применяется для создания программного обеспечения для множества устройств: обычных ПК, планшетов, смартфонов и мобильных телефонов и даже бытовой техники.\nОСОБЕННОСТИ JAVA\nКлючевой особенностью языка Java является то, что его код сначала транслируется в специальный байт-код, независимый от платформы. А затем этот байт-код выполняется виртуальной машиной JVM (Java Virtual Machine). В этом плане Java отличается от стандартных интерпретируемых языков как PHP или Perl, код которых сразу же выполняется интерпретатором. В то же время Java не является и чисто компилируемым языком, как С или С++. Подобная архитектура обеспечивает кроссплатформенность и аппаратную переносимость программ на Java, благодаря чему подобные программы без перекомпиляции могут выполняться на различных платформах - Windows, Linux, Mac OS и т.д. Для каждой из платформ может быть своя реализация виртуальной машины JVM, но каждая из них может выполнять один и тот же код. Еще одной ключевой особенностью Java является то, что она поддерживает автоматическую сборку мусора. А это значит, что вам не надо освобождать вручную память от ранее использовавшихся объектов, как в С++, так как сборщик мусора это сделает автоматически за вас. Java является объектно-ориентированным языком. Он поддерживает полиморфизм, наследование, статическую типизацию. Объектно-ориентированный подход позволяет решить задачи по построению крупных, но в тоже время гибких, масштабируемых и расширяемых приложений.");
     final lecture2 = Lecture(
+        links: <String>[
+          "https://www.oracle.com/java/technologies/downloads/",
+          "https://openjdk.org/",
+          "https://www.jetbrains.com/idea/download"
+        ],
+        image:
+            "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
+        videoUrl: "https://www.youtube.com/watch?v=xvUFqDKIKJE",
         currentPage: 0,
-        videoUrl: "https://www.youtube.com/watch?v=iIurlWiwgFA",
         isFinished: false,
         id: id2,
-        name: "Название $id2",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
+        name: "Лекция 2. Установка Java.",
         text:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy");
-    final lecture3 = Lecture(
-        currentPage: 0,
-        videoUrl: "https://www.youtube.com/watch?v=iIurlWiwgFA",
-        isFinished: false,
-        id: id3,
-        name: "Название $id3",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
-        text:
-            "Ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputa");
-    final lecture4 = Lecture(
-        currentPage: 0,
-        videoUrl: "https://www.youtube.com/watch?v=iIurlWiwgFA",
-        isFinished: false,
-        id: id4,
-        name: "Название $id4",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
-        text:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy");
-    final lecture5 = Lecture(
-        currentPage: 0,
-        videoUrl: "https://www.youtube.com/watch?v=iIurlWiwgFA",
-        isFinished: false,
-        id: id5,
-        name: "Название $id5",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
-        text:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy");
+            "Для разработки на языке программирования Java нам потребуется специальный комплект инструментов, который называется JDK или Java Development Kit. Однако стоит отметить, что существуют разные реализации JDK, хотя все они используют один и тот же язык - Java. Две наиболее популярных реализации - Oracle JDK и OpenJDK. Наибольшие различия с точки зрения лицензирования и поддержки. Согласно лицензии Oracle JDK можно использовать бесплатно для персональных нужд, а также для разработки, тестирования и демонстрации приложений. В остальных случаях (например, для получения поддержки) необходима коммерческая лицензия в виде подписки. А OpenJDK полностью бесплатна. Итак, для разработки программ на Java нам потребуется специальный комплект для разработки JDK (Java Development Kit). JDK включает ряд программ и утилит, которые позволяют компилировать, запускать программы на Java, а также выполнять ряд других функций. Загрузить и установить соответствующую версию JDK можно с официальных сайтов. Как правило, крупные программы разрабатываются с использованием таких средств как IDE или интегрированные среды разработки, которые упрощают и ускоряют написание кода и создание приложений. На данный момент одной из самых популярных сред разработки для Java является IntelliJ IDEA от компании JetBrains.");
 
-    final list = <Lecture>[lecture1, lecture2, lecture3, lecture4, lecture5];
+    final list = <Lecture>[lecture1, lecture2];
     return list;
   }
 
   Future<List<Test>> createTests() async {
-    final id1 = Uuid().v1().toString();
-    final id2 = Uuid().v1().toString();
-    final id3 = Uuid().v1().toString();
+    final idt1 = Uuid().v1().toString();
+    final idt2 = Uuid().v1().toString();
+    final idt3 = Uuid().v1().toString();
 
-    final id4 = Uuid().v1().toString();
-    final id5 = Uuid().v1().toString();
-    final id6 = Uuid().v1().toString();
-    final question1 = TestQuestion(id: id4, image: null, text: "Вопрос 1");
-    final question2 = TestQuestion(id: id5, image: null, text: "Вопрос 2");
-    final question3 = TestQuestion(id: id6, image: null, text: "Вопрос 3");
-    final qa = <TestQuestion>[question1, question2, question3];
+    final idq1 = Uuid().v1().toString();
+    final idq2 = Uuid().v1().toString();
+    final idq3 = Uuid().v1().toString();
+    final idq4 = Uuid().v1().toString();
+    final question1 = TestQuestion(
+        id: idq1, image: null, text: "В каком году была разработана Java?");
+    final question2 =
+        TestQuestion(id: idq2, image: null, text: "Что такое JDK?");
+    final question3 =
+        TestQuestion(id: idq3, image: null, text: "Что такое JRE?");
+    final question4 = TestQuestion(
+        id: idq4, image: null, text: "Популярная среда разработки для Java:");
+    final qa = <TestQuestion>[question1, question2, question3, question4];
 
-    final id7 = Uuid().v1().toString();
-    final id8 = Uuid().v1().toString();
-    final id9 = Uuid().v1().toString();
-    final answer1 = TestAnswer(id: id7, text: "Ответ 1 верный", isRight: true);
-    final answer2 = TestAnswer(id: id8, text: "Ответ 2", isRight: false);
-    final answer3 = TestAnswer(id: id9, text: "Ответ 3", isRight: false);
-    final id10 = Uuid().v1().toString();
-    final id11 = Uuid().v1().toString();
-    final id12 = Uuid().v1().toString();
-    final answer4 = TestAnswer(id: id10, text: "Ответ 4", isRight: false);
-    final answer5 = TestAnswer(id: id11, text: "Ответ 5 верный", isRight: true);
-    final answer6 = TestAnswer(id: id12, text: "Ответ 6", isRight: false);
-    final id13 = Uuid().v1().toString();
-    final id14 = Uuid().v1().toString();
-    final id15 = Uuid().v1().toString();
-    final answer7 = TestAnswer(id: id13, text: "Ответ 7", isRight: false);
-    final answer8 = TestAnswer(id: id14, text: "Ответ 8", isRight: false);
-    final answer9 = TestAnswer(id: id15, text: "Ответ 9 верный", isRight: true);
+    final ida1 = Uuid().v1().toString();
+    final ida2 = Uuid().v1().toString();
+    final ida3 = Uuid().v1().toString();
+    final answer1 = TestAnswer(id: ida1, text: "1996", isRight: true);
+    final answer2 = TestAnswer(id: ida2, text: "1990", isRight: false);
+    final answer3 = TestAnswer(id: ida3, text: "1995", isRight: false);
+
+    final ida4 = Uuid().v1().toString();
+    final ida5 = Uuid().v1().toString();
+    final ida6 = Uuid().v1().toString();
+    final answer4 =
+        TestAnswer(id: ida4, text: "java development kit", isRight: true);
+    final answer5 =
+        TestAnswer(id: ida5, text: "java deployment kit", isRight: false);
+    final answer6 =
+        TestAnswer(id: ida6, text: "java distributed kit", isRight: false);
+
+    final ida7 = Uuid().v1().toString();
+    final ida8 = Uuid().v1().toString();
+    final ida9 = Uuid().v1().toString();
+    final answer7 =
+        TestAnswer(id: ida7, text: "java runtime exception", isRight: false);
+    final answer8 =
+        TestAnswer(id: ida8, text: "java runtime environment", isRight: true);
+    final answer9 =
+        TestAnswer(id: ida9, text: "java runtime execution", isRight: false);
+
+    final ida10 = Uuid().v1().toString();
+    final ida11 = Uuid().v1().toString();
+    final ida12 = Uuid().v1().toString();
+    final answer10 = TestAnswer(id: ida10, text: "PyCharm", isRight: false);
+    final answer11 = TestAnswer(id: ida11, text: "Блокнот", isRight: false);
+    final answer12 =
+        TestAnswer(id: ida12, text: "IntelliJ IDEA", isRight: true);
     final a1 = <TestAnswer>[
       answer1,
       answer2,
@@ -193,20 +186,25 @@ class LoaderScreenViewModel {
       answer6,
     ];
     final a3 = <TestAnswer>[answer7, answer8, answer9];
+    final a4 = <TestAnswer>[answer10, answer11, answer12];
 
-    final questionBox = await BoxManager.instance.openQuestionsBox(id1);
+    final questionBox = await BoxManager.instance.openQuestionsBox(idt1);
 
-    final answerBox1 = await BoxManager.instance.openAnswersBox(id4);
+    final answerBox1 = await BoxManager.instance.openAnswersBox(idq1);
     await answerBox1.addAll(a1);
     await BoxManager.instance.closeBox(answerBox1);
 
-    final answerBox2 = await BoxManager.instance.openAnswersBox(id5);
+    final answerBox2 = await BoxManager.instance.openAnswersBox(idq2);
     await answerBox2.addAll(a2);
     await BoxManager.instance.closeBox(answerBox2);
 
-    final answerBox3 = await BoxManager.instance.openAnswersBox(id6);
+    final answerBox3 = await BoxManager.instance.openAnswersBox(idq3);
     await answerBox3.addAll(a3);
     await BoxManager.instance.closeBox(answerBox3);
+
+    final answerBox4 = await BoxManager.instance.openAnswersBox(idq4);
+    await answerBox4.addAll(a4);
+    await BoxManager.instance.closeBox(answerBox4);
 
     await questionBox.addAll(qa);
     await BoxManager.instance.closeBox(questionBox);
@@ -214,31 +212,18 @@ class LoaderScreenViewModel {
     question1.answers = HiveList(answerBox1);
     question2.answers = HiveList(answerBox2);
     question3.answers = HiveList(answerBox3);
+    question4.answers = HiveList(answerBox4);
 
     final test1 = Test(
-        id: id1,
-        name: "Тест название $id1",
+        id: idt1,
+        name: "Тест 1. Введение в Java.",
         image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
+            "https://changellenge.com/upload/iblock/8fb/8fbfea7d04945d7c47c62d0617866ff7.jpg",
         text: "Текст",
-        questionsCount: 3);
+        questionsCount: 4);
     test1.questions = HiveList(questionBox);
-    final test2 = Test(
-        id: id2,
-        name: "Тест название $id2",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
-        text: "Текст",
-        questionsCount: 3);
-    final test3 = Test(
-        id: id3,
-        name: "Тест название $id3",
-        image:
-            "https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg",
-        text: "Текст",
-        questionsCount: 3);
 
-    final list = <Test>[test1, test2, test3];
+    final list = <Test>[test1];
     return list;
   }
 }

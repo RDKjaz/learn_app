@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 
 class LectureDetailData {
   late String name = '';
-  late String image = '';
+  late String? image;
   late String text = '';
-  late String videoUrl = '';
+  late String? videoUrl;
+  List<String>? links;
   int currentPage = 0;
   bool isFinished = false;
   bool isLoading = true;
@@ -54,6 +55,7 @@ class LectureDetailViewModel extends ChangeNotifier {
     data.currentPage = details.currentPage;
     data.isFinished = details.isFinished;
     data.videoUrl = details.videoUrl;
+    data.links = details.links;
     notifyListeners();
   }
 

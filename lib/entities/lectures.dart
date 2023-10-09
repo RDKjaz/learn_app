@@ -19,7 +19,7 @@ class Lecture extends HiveObject {
   @HiveField(1)
   final String name;
   @HiveField(2)
-  final String image;
+  final String? image;
   @HiveField(3)
   final String text;
   @HiveField(4)
@@ -27,15 +27,18 @@ class Lecture extends HiveObject {
   @HiveField(5)
   final bool isFinished;
   @HiveField(6)
-  final String videoUrl;
+  final String? videoUrl;
+  @HiveField(7)
+  final List<String>? links;
 
   Lecture({
+    this.image,
+    this.videoUrl,
+    this.links,
     required this.id,
     required this.name,
-    required this.image,
     required this.text,
     required this.currentPage,
     required this.isFinished,
-    required this.videoUrl,
   });
 }

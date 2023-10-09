@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:app_learn/navigation/main_navigation.dart';
 import 'package:app_learn/ui/widgets/lecture_detail/lecture_detail_view_model.dart';
-import 'package:app_learn/ui/widgets/others/radial_percent_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LectureDetail extends StatefulWidget {
   const LectureDetail({super.key});
@@ -70,16 +72,18 @@ class _ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final image =
         context.select((LectureDetailViewModel model) => model.data.image);
-    return AspectRatio(
-      aspectRatio: 390 / 219,
-      child: Stack(
-        children: [
-          Center(
-            child: Image.network(image),
-          ),
-        ],
-      ),
-    );
+    return image != null
+        ? AspectRatio(
+            aspectRatio: 390 / 219,
+            child: Stack(
+              children: [
+                Center(
+                  child: Image.network(image),
+                ),
+              ],
+            ),
+          )
+        : const SizedBox.shrink();
   }
 }
 
@@ -97,12 +101,6 @@ class _LectureInfoWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // const _ScoreWidget(),
-            // Container(
-            //   height: 20,
-            //   width: 1,
-            //   color: Colors.white,
-            // ),
             _PlayVideoWidget(),
           ],
         ),
@@ -115,39 +113,6 @@ class _LectureInfoWidget extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// Результат виджет
-class _ScoreWidget extends StatelessWidget {
-  const _ScoreWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final voteAverage =
-        context.select((LectureDetailViewModel model) => model.data.name);
-    return Row(
-      children: [
-        SizedBox(
-          height: 70,
-          width: 70,
-          child: RadialPercentWidget(
-            percent: 57 / 100,
-            child: Text(
-              57.toStringAsFixed(0),
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () {},
-          child: const Text(
-            'Результат',
-            style: TextStyle(color: Colors.white),
           ),
         ),
       ],
@@ -199,13 +164,15 @@ class _LectureTextWidgetState extends State<_LectureTextWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<LectureDetailViewModel>();
+
     final overview =
         context.select((LectureDetailViewModel model) => model.data.text);
     List<String> substrings = [];
 
-    for (int i = 0; i < overview.length; i += 850) {
-      if (i + 850 <= overview.length) {
-        substrings.add(overview.substring(i, i + 850));
+    for (int i = 0; i < overview.length; i += 700) {
+      if (i + 700 <= overview.length) {
+        substrings.add(overview.substring(i, i + 700));
       } else {
         substrings.add(overview.substring(i));
       }
@@ -222,10 +189,21 @@ class _LectureTextWidgetState extends State<_LectureTextWidget> {
       ),
     );
 
+    var links = <Widget>[];
+    if (model.data.links != null && model.data.links!.isNotEmpty) {
+      for (var i = 0; i < model.data.links!.length; i++) {
+        final link = model.data.links![i];
+        final w = ElevatedButton(
+            onPressed: () => launchUrlString(link),
+            child: Text("Ссылка ${i + 1}"));
+        links.add(w);
+      }
+    }
+
     return Column(
       children: [
         SizedBox(
-          height: 340,
+          height: 360,
           child: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: widget.pageController,
@@ -242,7 +220,9 @@ class _LectureTextWidgetState extends State<_LectureTextWidget> {
         PageArrows(
           pageController: widget.pageController,
           lastPageNumber: substrings.length,
-        )
+        ),
+        SizedBox(height: 20),
+        Column(children: links),
       ],
     );
   }

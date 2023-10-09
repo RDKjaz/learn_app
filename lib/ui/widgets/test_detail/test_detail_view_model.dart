@@ -3,7 +3,6 @@ import 'package:app_learn/data_providers/box_manager.dart';
 import 'package:app_learn/data_providers/session_data_provider.dart';
 import 'package:app_learn/entities/tests.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class TestDetailData {
   late String id = '';
@@ -68,7 +67,7 @@ class TestDetailViewModel extends ChangeNotifier {
     data.id = test.id;
     data.name = test.name;
     data.image = test.image;
-    data.questionsCount = test.questions?.length ?? 0;
+    data.questionsCount = test.questionsCount;
     data.questions = questions;
     data.answers = answers;
 

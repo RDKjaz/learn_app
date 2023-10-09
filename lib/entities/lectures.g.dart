@@ -17,20 +17,21 @@ class LectureAdapter extends TypeAdapter<Lecture> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Lecture(
+      image: fields[2] as String?,
+      videoUrl: fields[6] as String?,
+      links: (fields[7] as List?)?.cast<String>(),
       id: fields[0] as String,
       name: fields[1] as String,
-      image: fields[2] as String,
       text: fields[3] as String,
       currentPage: fields[4] as int,
       isFinished: fields[5] as bool,
-      videoUrl: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Lecture obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class LectureAdapter extends TypeAdapter<Lecture> {
       ..writeByte(5)
       ..write(obj.isFinished)
       ..writeByte(6)
-      ..write(obj.videoUrl);
+      ..write(obj.videoUrl)
+      ..writeByte(7)
+      ..write(obj.links);
   }
 
   @override
